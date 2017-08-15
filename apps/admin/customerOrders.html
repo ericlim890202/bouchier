@@ -1,0 +1,41 @@
+<div class="padding">
+    <div class="box m-t">
+        <div>
+            <div class="box-body pull-right">
+                Results per page:
+                <select ng-model="lengthFilter" class="input-sm w-auto form-control c-select inline m-r"
+                        ng-options="number for number in listLength">
+                </select>
+                <input ng-model="search" placeholder="Search Orders" type="text"
+                       class="form-control input-sm w-auto inline"/>
+            </div>
+            <div class="box-header pull-left">
+                <h2>Orders for: {{tempCustomer.fname}} {{tempCustomer.lname}}</h2>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped b-t b-b">
+                <thead>
+                <tr>
+                    <th>Pickup Date</th>
+                    <th>Order ID</th>
+                    <th>Store</th>
+                    <th style="width:5%">View</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="order in ordersFiltered = (orders | limitTo : lengthFilter:selectedPage*lengthFilter | filter: customerID  = tempCustomer._id | filter: search)">
+                    <td>{{order.pickUpDate}}</td>
+                    <td>{{order.orderNumber}}</td>
+                    <td>{{order.store}}</td>
+                    <td>
+                        <a href="selectedOrder.html" class="btn btn-xs btn-outline rounded b-primary text-primary"
+                           ui-sref="selected-order({id: order._id})">View Order
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

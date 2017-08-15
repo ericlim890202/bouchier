@@ -1,0 +1,161 @@
+<div class="padding">
+    <div class="clearfix m-b nav-active-primary">
+        <ul class="nav nav-pills fontBold" ui-nav>
+            <!--
+            <li class="nav-item">
+                <a class="nav-link" ui-sref="app.products" href="productsList.html"
+                   ng-class="{active: $state.includes ('app.products')}">
+                    Products
+                </a>
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link" ui-sref="app.customers" href="customersList.html"
+                   ng-class="{active: $state.includes ('app.customers')}">
+                    Customers
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" ui-sref="app.users" href="usersList.html"
+                   ng-class="{active: $state.includes ('app.users')}">
+                    Users
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" ui-sref="app.orders" href="orderList.html"
+                   ng-class="{active: $state.includes ('app.orders')}">
+                    Orders
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" ui-sref="app.product-summary" href="productSummary.html.html"
+                   ng-class="{active: $state.includes ('app.product-summary')}">
+                    Summary
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" ui-sref="app.website-orders" href="website-orders.html"
+                   ng-class="{active: $state.includes ('app.website-orders')}">
+                    Website Orders
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!------- ORDER LIST ------->
+    <div class="box">
+        <div>
+            <div class="box-header pull-right">
+                <button ng-click="changePageSize()" ng-show="orders.showDeletedOrders != '2'" class="btn btn-xs text-primary"
+                   ui-sref="ordersForPrint">Print Orders
+                </button>
+                <button  ng-csv="getOrdersArray()" filename="orders-{{today}}.csv" class="btn btn-xs text-primary">Download CSV
+                </button>
+                <select ng-show="orders.showDeletedOrders != '2'" class="form-control c-select w-auto inline" ng-model="pickUpDate.complete">
+                    <option value="" selected>Show All Orders</option>
+                    <option value="true">Show Complete</option>
+                    <option value="false" selected>Show Incomplete</option>
+                </select>
+                <select class="form-control c-select w-auto inline" ng-model="pickUpDate.store">
+                    <option value="" selected>All Stores</option>
+                    <option ng-repeat="s in store">{{s}}</option>
+                </select>
+                <select ng-if="pickUpDate.store == 'City'" class="form-control c-select w-auto inline" ng-model="pickUpDate.pickUpDate">
+                    <option value="" selected>Select Pickup Date</option>
+                    <option ng-repeat="d in pickupdates track by $index" value="{{d.date}}">{{d.date}}/12/16 - No.{{citypud[d.date]}}</option>
+                </select>
+                <select ng-if="pickUpDate.store == 'Toorak'" class="form-control c-select w-auto inline" ng-model="pickUpDate.pickUpDate">
+                    <option value="" selected>Select Pickup Date</option>
+                    <option ng-repeat="d in pickupdates track by $index" value="{{d.date}}">{{d.date}}/12/16 - No.{{toorakpud[d.date]}}</option>
+                </select>
+                <select ng-if="pickUpDate.store == 'Deli'" class="form-control c-select w-auto inline" ng-model="pickUpDate.pickUpDate">
+                    <option value="" selected>Select Pickup Date</option>
+                    <option ng-repeat="d in pickupdates track by $index" value="{{d.date}}">{{d.date}}/12/16 - No.{{delipud[d.date]}}</option>
+                </select>
+                <input type="number" min="1" max="100" class="form-control input-sm w-auto inline" ng-model="pageSize">
+                </select>
+                <input ng-model="searchList" placeholder="Search Orders" type="text"
+                       class="form-control input-sm w-auto inline"/>
+            </div>
+            <div class="box-header pull-left">
+                <h2 class="inline m-r">Orders List</h2>
+            </div>
+        </div>
+        <div class="box-header pull-right" style="width: 250px">
+            <select class="form-control c-select pull-right" ng-model="orders.showDeletedOrders">
+                <option value="" selected>Show Existing Orders</option>
+                <option value="2">Show Deleted Orders</option>
+            </select>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped b-t b-b">
+                <thead>
+                <tr>
+                    <th ng-show="orders.showDeletedOrders != '2'">Completed</th>
+                    <th>Name</th>
+                    <th>Store</th>
+                    <th>Pickup Date</th>
+                    <th>Placed By</th>
+                    <th style="width:5%">View</th>
+                    <th style="width:7%"><span ng-show="orders.showDeletedOrders != '2'">Remove</span><span ng-show="orders.showDeletedOrders == '2'">Undo</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--
+                 <tr dir-paginate="product in products | filter:searchList | itemsPerPage: pageSize"
+                    current-page="currentPage">
+                 -->
+                <tr ng-show="orders.showDeletedOrders != '2'" dir-paginate="order in ($root.filteredOrders = (orders | filter:searchList | filter: pickUpDate | itemsPerPage: pageSize))"
+                    current-page="currentPage">
+                    <td>
+                        <input class="v-m" ng-change="updateOrder(order)" ng-model="order.complete" type="checkbox">
+                    </td>
+                    <td>
+                        {{filterOrderID(order.customerID)}}
+                    </td>
+                    <td>{{order.store}}</td>
+                    <td>{{order.pickUpDate}}/12/16</td>
+                    <td>{{order.staffOwner}}</td>
+                    <td>
+                        <a href="selectedOrder.html" class="btn btn-xs btn-outline rounded b-primary text-primary"
+                           ui-sref="selected-order({id: order._id})">View Order
+                        </a>
+                    </td>
+                    <td class="text-center color-red">
+                        <a ng-click="deleteProductModal(order)">
+                            <i class="material-icons fontBold">&#xe14c;</i>
+                        </a>
+                    </td>
+                </tr>
+                <tr ng-show="orders.showDeletedOrders == '2'" ng-repeat="order in deletedOrders | filter:searchList | filter: pickUpDate">
+                    <td>
+                        {{filterOrderID(order.customerID)}}
+                    </td>
+                    <td>{{order.store}}</td>
+                    <td>{{order.pickUpDate}}/12/16</td>
+                    <td>{{order.staffOwner}}</td>
+                    <td>
+                        <a href="selectedOrder.html" class="btn btn-xs btn-outline rounded b-primary text-primary"
+                           ui-sref="selected-order({id: order._id})">View Order
+                        </a>
+                    </td>
+                    <td class="text-center bright-green">
+                        <a ng-click="undoDelete(order)">
+                            <i class="material-icons fontBold">&#xe166;</i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+                <!-- Pagination in footer -->
+                <tfoot ng-show="orders.showDeletedOrders != '2'">
+                <tr>
+                    <td></td>
+                    <td colspan="7" class="text-right">
+                        <dir-pagination-controls max-size="5" boundary-links="true"
+                                                 template-url="../libs/angular/pagination-directive/paginationDir-tpl.html"></dir-pagination-controls>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

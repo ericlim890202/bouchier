@@ -1,0 +1,1 @@
+!function(){"use strict";function c(c,n){function i(i,t,l){t.bind("click",function(i){i.preventDefault(),c.hash(l.uiScrollTo),n()})}return{restrict:"AC",replace:!0,link:i}}angular.module("app").directive("uiScrollTo",c),c.$inject=["$location","$anchorScroll"]}();

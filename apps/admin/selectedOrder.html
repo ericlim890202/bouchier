@@ -1,0 +1,58 @@
+<div class="padding">
+    <!-- Print button that is hidden upon printing of page -->
+    <button class="no-print btn btn-primary pull-right" type="button" ng-click="printPage()">Print</button>
+    <button class="no-print btn btn-primary pull-right m-r" type="button" ng-click="goBack()">Back</button>
+    <div class="container">
+        <div class="text-center">
+            <img src="../assets/images/bouchier-logo-large-trans.png">
+        </div>
+        <div class="m-t-lg">
+            <span class="h5">
+                Pickup Date: <b ng-if="!selectedDeletedOrder">{{selectedOrder.pickUpDate}}/12/16</b> <b ng-if="selectedDeletedOrder">{{selectedDeletedOrder.pickUpDate}}/12/16</b>
+            </span>
+            <span class="h5 pull-right">
+                Store: <b ng-if="!selectedDeletedOrder">{{selectedOrder.store}}</b> <b ng-if="selectedDeletedOrder">{{selectedDeletedOrder.store}}</b>
+            </span>
+        </div>
+        <div class="m-t-lg m-b">
+            <span class="h4">
+                Customer Name: <b ng-if="!selectedDeletedOrder">{{selectedOrder.customerName}}</b> <b ng-if="selectedDeletedOrder">{{selectedDeletedOrder.customerName}}</b>
+            </span>
+            <span class="h6 pull-right">
+                Order Number: <b ng-if="!selectedDeletedOrder">{{selectedOrder.orderNumber}}</b> <b ng-if="selectedDeletedOrder">{{selectedDeletedOrder.orderNumber}}</b>
+            </span>
+        </div>
+        <div class="table-responsive">
+            <table class="selected-order-table">
+                <thead>
+                <tr>
+                    <th class="selected-order-table">Code</th>
+                    <th class="selected-order-table">Description</th>
+                    <th class="selected-order-table">Quantity</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-if="!selectedDeletedOrder" ng-repeat="item in selectedOrder.items">
+                    <td class="selected-order-table">{{item.code}}</td>
+                    <td class="selected-order-table">{{item.title}} <span ng-if="item.productRequests"><b>- Request:</b> {{item.productRequests}}</span>
+                    </td>
+                    <td class="selected-order-table"><span ng-if="item.weightQty">{{item.weightQty}}kg</span> <span
+                            ng-if="item.unitQty">{{item.unitQty}} each</span>
+                    </td>
+                </tr>
+                <tr ng-if="selectedDeletedOrder" ng-repeat="item in selectedDeletedOrder.items">
+                    <td class="selected-order-table">{{item.code}}</td>
+                    <td class="selected-order-table">{{item.title}} <span ng-if="item.productRequests"><b>- Request:</b> {{item.productRequests}}</span>
+                    </td>
+                    <td class="selected-order-table"><span ng-if="item.weightQty">{{item.weightQty}}kg</span> <span
+                            ng-if="item.unitQty">{{item.unitQty}} each</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <span ng-if="selectedOrder.staffOwner" class="m-t"><b>Order Placed By: </b>{{selectedOrder.staffOwner}}</span>
+            <span ng-if="selectedOrder.deposit" class="m-t pull-right"><b>Deposit Paid: </b>${{selectedOrder.deposit}}</span>
+        </div>
+    </div>
+    <p style="page-break-after: always; text-align: center;"></p>
+</div>

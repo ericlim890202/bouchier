@@ -1,0 +1,33 @@
+{
+  "name": "bouchier",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bouchierNode.js",
+  "dependencies": {
+    "angular-file-upload": "^2.3.4",
+    "body-parser": "^1.15.0",
+    "connect-multiparty": "^2.0.0",
+    "connect-mongo": "^1.1.0",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "gulp": "^3.9.1",
+    "gulp-install": "^1.1.0",
+    "gulp-uglify": "^3.0.0",
+    "hjs": "^0.0.6",
+    "mongodb": "^2.1.7",
+    "multer": "^1.1.0",
+    "nodemailer": "^2.5.0",
+    "nodemailer-sendmail-transport": "^1.0.0",
+    "sticky-session": "^1.1.2",
+    "ws": "^1.1.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,45 @@
+<div class="padding">
+    <!-- Print button that is hidden upon printing of page -->
+    <button class="no-print btn btn-primary pull-right" type="button" ng-click="printPage()">Print</button>
+    <button class="no-print btn btn-primary pull-right m-r" type="button" ng-click="goBack()">Back</button>
+    <div class="container">
+        <div class="text-center">
+            <img src="../assets/images/bouchier-logo-large-trans.png">
+        </div>
+        <div class="m-t">
+            <h3>Product Summary</h3>
+        </div>
+        <div class="m-t-lg">
+            <span class="h5">
+                <span ng-if="$root.pickUpDate.pickUpDate">Pickup Date: <b>{{$root.pickUpDate.pickUpDate}}/12/16</b></span>
+                <span ng-if="!$root.pickUpDate.pickUpDate">Pickup Date: <b>All Pickup Dates</b></span>
+            </span>
+            <span class="h5 pull-right">
+                <span ng-if="$root.pickUpDate.store">Store: <b>{{$root.pickUpDate.store}}</b></span>
+                <span ng-if="!$root.pickUpDate.store">Store: <b>All Stores</b></span>
+            </span>
+        </div>
+        <div class="table-responsive m-t">
+            <table class="selected-order-table">
+                <thead>
+                <tr>
+                    <th class="selected-order-table">Code</th>
+                    <th class="selected-order-table">Description</th>
+                    <th class="selected-order-table">Quantity</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="sum in $root.filteredSummary">
+                    <td class="selected-order-table">{{sum.code}}</td>
+                    <td class="selected-order-table">{{sum.title}}</span>
+                    </td>
+                    <td class="selected-order-table"><span ng-if="sum.unit == 'kg'">{{sum.qty | number :2}}kg</span> <span
+                            ng-if="sum.unit != 'kg'">{{sum.qty}} each</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <p style="page-break-after: always; text-align: center;"></p>
+</div>

@@ -1,0 +1,58 @@
+<div class="padding">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="box">
+                <div class="box-header">
+                    <div class="">
+                        <p class="h5 font-bold suez-font">Custom Item</p>
+                        <p class="font-bold">SELECT OPTIONS AND ADD TO CART</p>
+                        <p class="h6"><b>Product Description:</b> Here you can add your own custom item to the shopping
+                            cart. Just enter the product name, quantity/weight and then add it to the cart.</p>
+                    </div>
+                </div>
+                <!-- Product Variations -->
+                <div class="box-body">
+                    <b ng-if="selectedProduct.byWeight">Note: Quantity is per kg.</b>
+                    <b ng-if="selectedProduct.byUnit">Note: Quantity is per unit.</b><br/>
+                    <input ng-change="poopFunction()" type="text" class="form-control width-half block m-t"
+                           ng-model="customItemSelect._id"
+                           value="customItemSelect._id"
+                           bs-options="product._id as product.title for product in customProducts"
+                           placeholder="Start typing to search"
+                           bs-typeahead="typeahead">
+
+                    <input class="form-control width-half block m-t" ng-model="selectedProduct.weightQty"
+                           ng-if="selectedProduct.byWeight" type="number" placeholder="Enter Quantity in kg's" required
+                           min="0">
+                    <input class="form-control width-half block m-t" ng-model="selectedProduct.unitQty" step="1"
+                           ng-if="selectedProduct.byUnit" type="number" placeholder="Enter Quantity" required min="0">
+                </div>
+                <div class="box-body">
+                    <span class="text-muted">Special Requests</span>
+                    <textarea class="form-control full-width m-t"
+                              placeholder="Enter any product requests here such as specific packaging etc."
+                              ng-model="customItemSelect.productRequests"></textarea>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+                <div>
+                    <div class="box">
+                        <img src="../assets/images/xmas.min/custom-item.jpg" alt=""
+                             class="img-responsive">
+                    </div>
+                    <div>
+                        <button ng-disabled="selectedProduct.weightQty == undefined && selectedProduct.unitQty == undefined"
+                                ng-hide="selectedProduct.title == '' || selectedProduct.title == undefined"
+                                class="btn w-full add-cart-color"
+                                ng-click="addToCart()">Add to Cart
+                            <i class="material-icons">&#xe148;</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

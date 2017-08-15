@@ -1,0 +1,81 @@
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="aside-close-btn pull-right" ng-click="$hide()">
+                    <i class="material-icons v-m">&#xe5cd;</i>
+                </button>
+                <!-- Fixed Qty -->
+                <h4 ng-show="isVariationNew == true && newVariation.varType == 'Product Variation'" class="modal-title">Add Product Variation</h4>
+                <h4 ng-show="isVariationNew == false && newVariation.varType == 'Product Variation'" class="modal-title">Edit Product Variation</h4>
+            </div>
+
+            <!-- Modal Body -->
+            <form class="form-validation">
+                    <div class="modal-body">
+
+                        <!-- Choice between weight and quantity variation -->
+                        <div ng-show="newVariation.varType == 'Product Variation'">
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Add Variation Title:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" ng-model="newVariation.title" class="form-control" placeholder="Enter Product Title"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Cost:</label>
+                                <div class="col-sm-9">
+                                    <input type="number" ng-model="newVariation.cost" class="form-control" placeholder="Enter Cost"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Pricing Type:</label>
+                                <div class="col-sm-9">
+                                    <label class="radio-inline">
+                                        <input type="radio" ng-model="newVariation.priceType" name="productVarGroup"
+                                               value="weight"> Per Kg
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" ng-model="newVariation.priceType" name="productVarGroup" value="unit">
+                                        Per Unit
+                                    </label>
+                                </div>
+                            </div>
+                            <!--
+                            <div class="form-group row" ng-show="newVariation.priceType == 'unit'">
+                                <label class="col-sm-3 form-control-label">Weight Per Unit:</label>
+                                <div class="col-sm-9 col-sm-offset-3">
+                                    <input type="number" class="form-control" ng-model="newVariation.weightPerUnit"
+                                           placeholder="Weight per individual unit (kg's)">
+                                </div>
+                            </div> -->
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Add Product Code:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" ng-model="newVariation.code" class="form-control" placeholder="Enter Code"
+                                           required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </form>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button ng-show="isVariationNew == true && newVariation.varType == 'Fixed Weight'" type="submit" class="btn btn-default"
+                        ng-click="saveFixedWeight()">Add
+                </button>
+                <button ng-show="isVariationNew == true && newVariation.varType == 'Product Variation'" type="submit" class="btn btn-default"
+                        ng-click="saveFixedQty()">Add
+                </button>
+                <button ng-show="isVariationNew == false" type="submit" class="btn btn-default"
+                        ng-click="saveExistingVar()">Save
+                </button>
+                <button type="button" class="btn btn-default" ng-click="$hide()">Cancel</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

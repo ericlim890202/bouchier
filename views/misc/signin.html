@@ -1,0 +1,20 @@
+<div class="text-center" style="padding-top: 100px">
+  <img src="../assets/images/butcher-logo-small.png">
+</div>
+<div class="center-block w-xxl w-auto-xs">
+    <div class="p-a-md box-color r text-color m-a">
+      <form name="form" action="login" method="post">
+        <div class="md-form-group float-label">
+          <select class="md-input" name="username" required>
+            <option value="" selected>Please Select User</option>
+            <option ng-repeat="user in users" value="{{user.email}}">{{user.name}} {{user.lastName}}</option>
+          </select>
+        </div>
+        <div class="md-form-group">
+          <input type="password" class="md-input" name="password" placeholder="Enter Password" required>
+        </div>
+        <button type="submit" class="btn btn-outline rounded b-primary text-primary btn-block p-x-md">Sign in</button>
+      </form>
+    </div>
+
+  </div>

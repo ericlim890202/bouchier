@@ -1,0 +1,13 @@
+<div class="dropdown-menu pull-right dropdown-menu-scale">
+    <a ng-hide="$root.loggedUser.access == 'Standard' || $state.includes ('app.products') || $state.includes ('app.orders') || $state.includes ('app.users') || $state.includes ('app.product-variations') || $state.includes('app.customers') || $state.includes('app.customers-orders') || $state.includes('app.selected-order') || $state.includes('app.website-orders') || $state.includes ('app.orders') || $state.includes('app.product-summary')" class="dropdown-item" ui-sref="app.customers">
+        <span>Admin</span>
+    </a>
+    <a ng-show="$state.includes ('app.products') || $state.includes ('app.orders') || $state.includes ('app.users') || $state.includes ('app.product-variations') || $state.includes('app.customers') || $state.includes('app.customers-orders') || $state.includes('app.selected-order') || $state.includes('app.product-summary') || $state.includes ('app.website-orders')" class="dropdown-item" ui-sref="app.select-order"
+       href="select-order.html">
+        <span>Back to App</span>
+    </a>
+    <div ng-hide="$root.loggedUser.access == 'Standard'" class="dropdown-divider"></div>
+    <a class="dropdown-item" href="login">Sign out</a>
+</div>
+
+

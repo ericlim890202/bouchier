@@ -1,0 +1,42 @@
+<div class="padding">
+    <!-- Print button that is hidden upon printing of page -->
+    <button class="no-print btn btn-primary pull-right" type="button" ng-click="printPage()">Print</button>
+    <button class="no-print btn btn-primary pull-right m-r" type="button" ng-click="goBack()">Back</button>
+<div class="container"  ng-repeat="order in $root.filteredOrders">
+    <div class="text-center">
+        <img src="../assets/images/bouchier-logo-large-trans.png">
+    </div>
+    <div class="m-t-lg">
+        <span class="h5">Pickup Date: <b>{{order.pickUpDate}}/12/16</b></span>
+        <span class="h5 pull-right">Store: <b>{{order.store}}</b></span>
+    </div>
+    <div class="m-t-lg m-b">
+        <span class="h4">Customer Name: <b>{{order.customerName}}</b></span>
+        <span class="h6 pull-right">Order Number: <b>{{order.orderNumber}}</b></span>
+    </div>
+    <div class="table-responsive">
+        <table class="selected-order-table">
+            <thead>
+            <tr>
+                <th class="selected-order-table">Code</th>
+                <th class="selected-order-table">Description</th>
+                <th class="selected-order-table">Quantity</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in order.items">
+                <td class="selected-order-table">{{item.code}}</td>
+                <td class="selected-order-table">{{item.title}} <span ng-if="item.productRequests"><b>- Request:</b> {{item.productRequests}}</span></td>
+                <td class="selected-order-table"><span ng-if="item.weightQty">{{item.weightQty}}kg</span> <span ng-if="item.unitQty">{{item.unitQty}} each</span></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="m-t">
+        <span><b>Order Placed By: </b>{{order.staffOwner}}</span>
+        <span ng-if="order.deposit" class="pull-right"><b class="color-red">Deposit Paid: </b>${{order.deposit}}</span>
+        </div>
+    </div>
+    <p style="page-break-after: always; text-align: center;"></p>
+</div>
+
+</div>

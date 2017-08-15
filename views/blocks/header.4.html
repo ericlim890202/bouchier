@@ -1,0 +1,123 @@
+<div class="navbar">
+    <a data-toggle="collapse" data-target="#navbar-4" class="navbar-item pull-left hidden-md-up m-a-0 m-l">
+        <i class="material-icons">&#xe5d2;</i>
+    </a>
+
+    <div class="pull-center display-nothing">
+        <img class="top-header-logo" src="../assets/images/peter-bouchier-heading.png">
+    </div>
+
+    <!-- nabar right -->
+    <ul class="nav navbar-nav pull-right m-l">
+        <li class="nav-item dropdown"
+            ng-hide="$state.includes ('app.select-order') || $state.includes ('app.new-order-details') || $state.includes ('app.existing-order')
+             || $state.includes ('app.products') || $state.includes ('app.orders') || $state.includes ('app.users')
+              || $state.includes ('app.order-confirmation') || $state.includes('app.product-variations') || $state.includes('app.customers')
+               || $state.includes('app.customers-orders') || $state.includes ('app.existing-customer') || $state.includes('app.selected-order') || $state.includes('app.product-summary') || $state.includes ('app.website-orders')">
+            <a class="nav-link" href data-toggle="dropdown">
+                <i class="material-icons text-lg v-m" ng-class="{'text-u-l': dropdownCart().length}">&#xe8cc;</i>
+                <!-- CART COUNTER
+                <b class="label label-sm up light-blue" ng-hide="!dropdownCart().length">{{totalCartCount()}}</b> -->
+            </a>
+            <div ui-include="'../views/blocks/dropdown.cart.html'"></div>
+        </li>
+        <li class="nav-item dropdown">
+            <a href class="nav-link dropdown-toggle clear" data-toggle="dropdown">
+              <span class="rounded alt-prim-bg w-32">
+                  {{firstLetter}}
+              </span>
+            </a>
+            <div ui-include="'../views/blocks/dropdown.user.html'"></div>
+        </li>
+
+    </ul>
+    <div ng-show="$state.includes ('app.new-order-details') || $state.includes ('app.existing-order') || $state.includes ('app.existing-customer')
+     || $state.includes('app.selected-order') || $state.includes('app.selected-order') || $state.includes('app.customers-orders') || $state.includes('app.product-variations')">
+        <ul class="nav navbar-nav left m-l">
+            <li class="nav-item dropdown" style="line-height: 3.5rem;">
+                <a class="btn btn-lrg btn-outline rounded b-primary text-primary" onclick="history.go(-1);">
+                    <i class="material-icons">&#xe5cb;</i>
+                    BACK
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- navbar collapse -->
+    <div class="collapse navbar-toggleable-sm" id="navbar-4">
+        <!-- link and dropdown -->
+        <ul class="nav navbar-nav text-{{app.setting.theme.primary}}-hover"
+            ng-hide="$state.includes ('app.select-order') || $state.includes ('app.new-order-details') || $state.includes ('app.existing-order')
+             || $state.includes ('app.products') || $state.includes ('app.orders') || $state.includes ('app.users')
+              || $state.includes ('app.order-confirmation')|| $state.includes('app.product-variations') || $state.includes('app.customers'
+              ) || $state.includes('app.customers-orders') || $state.includes ('app.existing-customer') || $state.includes('app.selected-order') || $state.includes('app.product-summary') || $state.includes ('app.website-orders')">
+            <!-- main burger nav icon, hides on tablet/mobile -->
+            <li class="nav-item">
+                <a class="nav-link hide-main-nav" ng-click="showAside()">
+                    <i class="material-icons menu-icon ">&#xe5d2;</i>
+                </a>
+            </li>
+            <!-- / main nav -->
+            <!-- mobile nav -->
+            <li class="nav-item hide-mobile-nav">
+                <a href="meat-selection.html" ui-sref="app.meat-selection">
+                    <span class="nav-icon">
+                        <i class="material-icons">&#xe561;</i>
+                    </span>
+                    <span class="nav-text">MEAT SELECTION</span>
+                </a>
+            </li>
+            <br>
+            <!-- Product selection -->
+            <div class="nav-item hide-mobile-nav">
+                <p>Products</p>
+                <hr>
+            </div>
+            <li class="nav-item hide-mobile-nav">
+                <a ui-sref="app.meat-range({_id:'ham'})">
+                    <span class="nav-text">HAM</span>
+                </a>
+            </li>
+            <li class="nav-item hide-mobile-nav">
+                <a ui-sref="app.meat-range({_id:'pork'})">
+                    <span class="nav-text">PORK</span>
+                </a>
+            </li>
+            <li class="nav-item hide-mobile-nav">
+                <a ui-sref="app.meat-range({_id:'turkey'})">
+                    <span class="nav-text">TURKEY</span>
+                </a>
+            </li>
+            <li class="nav-item hide-mobile-nav">
+                <a ui-sref="app.meat-range({_id:'beef'})">
+                    <span class="nav-text">BEEF</span>
+                </a>
+            </li>
+            <li class="nav-item hide-mobile-nav">
+                <a ui-sref="app.meat-range({_id:'poultry'})">
+                    <span class="nav-text">POULTRY</span>
+                </a>
+            </li>
+            <li class="nav-item hide-mobile-nav">
+                <a ui-sref="app.meat-range({_id:'lamb'})">
+                    <span class="nav-text">LAMB</span>
+                </a>
+            </li>
+            <li class="nav-item hide-mobile-nav">
+                <a ui-sref="app.meat-range({_id:'sausage'})">
+                    <span class="nav-text">SAUSAGES</span>
+                </a>
+            </li>
+            <li class="nav-item hide-mobile-nav">
+                <a ui-sref="app.meat-range({_id:'other'})">
+                    <span class="nav-text">OTHER</span>
+                </a>
+            </li>
+            <!-- / mobile nav nav -->
+
+        </ul>
+        <!-- / link and dropdown -->
+    </div>
+
+
+    <!-- / navbar collapse -->
+</div>

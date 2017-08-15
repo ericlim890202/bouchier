@@ -1,0 +1,33 @@
+<!-- dropdown -->
+<div class="dropdown-menu text-color w-xl animated fadeInUp p-a-0 pull-right">
+    <div class="b-b p-a p-y-sm">
+        <strong ng-hide="!dropdownCart().length"><span>{{totalCartCount()}}</span> items in cart</strong>
+        <strong ng-hide="dropdownCart().length">No items in cart</strong>
+    </div>
+    <form class="m-a-0">
+        <div class="scrollable" style="max-height: 132px">
+            <ul class="list-group no-bg m-a-0 no-radius no-border">
+                <li class="list-group-item alert" ng-repeat="item in dropdownCart() track by $index">
+                    <a class="pull-right inline p-x-sm" ng-click="showDelModal(item)">
+                        <i class="fa fa-close text-sm text-muted"></i>
+                    </a>
+                    <span class="clear block text-ellipsis">
+                        <span ng-if="item.unitQty">{{item.unitQty}} x</span><span ng-if="item.weightQty">{{item.weightQty}}kg -</span> {{item.title}}
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </form>
+    <div class="b-t p-a text-sm" ng-hide="!dropdownCart().length ||  $state.includes ('app.order-summary')">
+        <a href="order-summary.html" ui-sref="app.order-summary"
+           class="btn btn-xs btn-outline rounded b-primary text-primary">Checkout</a>
+    </div>
+    <div class="b-t p-a text-sm text-center">
+        <a class="btn btn-xs cancel-btn" ng-click="showCancelModal()">
+            <i class="material-icons">&#xe5c9;</i>
+            Exit this order
+        </a>
+    </div>
+</div>
+</div>
+<!-- / dropdown -->

@@ -1,0 +1,76 @@
+<div>
+    <div class="row-col row-col-xs">
+        <div class="text-center pos-rlt p-y-md">
+            <h2 class="text-shadow text-4x">
+                <span class="font-bold block m-t-lg suez-font">NEW ORDER</span>
+            </h2>
+            <p class="h5 m-y-md font-bold">ENTER NEW CUSTOMER DETAILS BELOW</p>
+            <span class="h5 m-y-md">OR</span>
+            <a class="order-btn-hover" ui-sref="app.existing-customer">
+                <p class="h6 m-y-md font-bold">Use existing customer details
+                    <i class="material-icons text-lg v-m">&#xe5cc;</i>
+                </p>
+            </a>
+            <form class="form-validation">
+                <div>
+                    <div class="col-sm-4 col-sm-offset-2">
+                        <div class="input-group-lg">
+                            <input type="text" class="form-control" placeholder="First Name"
+                                   ng-model="newCustomer.fname"
+                                   required>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 m-top-mobile ">
+                        <div class="input-group-lg">
+                            <input type="text" class="form-control" placeholder="Last Name" ng-model="newCustomer.lname"
+                                   required>
+                        </div>
+                    </div>
+                </div>
+                <div>
+
+                    <div class="col-sm-4 col-sm-offset-2 m-t">
+                        <div class="input-group-lg">
+                            <input type="email" class="form-control" placeholder="Email" ng-model="newCustomer.email"
+                                   required>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group-lg m-t">
+                            <input type="text" class="form-control" placeholder="Phone Number"
+                                   ng-model="newCustomer.phone"
+                                   required>
+                        </div>
+                    </div>
+                </div>
+                <!--
+                <div>
+                    <div class="col-sm-4 col-sm-offset-2 m-t">
+                        <div class="input-group-lg">
+                            <select class="form-control c-select" ng-model="newCustomer.store" required>
+                                <option value="" selected>Select Store</option>
+                                <option>Toorak</option>
+                                <option>City</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group-lg m-t">
+                            <select class="form-control c-select" ng-model="newCustomer.pickupDate">
+                                <option value="" selected>Pickup Date</option>
+                                <option ng-repeat="date in pickupDates">{{date}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="col-sm-12 m-t-lg">
+                    <button ng-disabled="newCustomer.fname == undefined || newCustomer.lname == undefined || newCustomer.email == undefined || newCustomer.phone == undefined"
+                            class="btn btn-lg btn-outline rounded b-primary text-primary" type="submit"
+                            href="meat-selection.html"
+                            ui-sref="app.meat-selection" ng-click="createCustomer()">Begin Order!
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<div>
+    <div class="row-col row-col-xs">
+        <div class="text-center pos-rlt p-y-md">
+            <h2 class="text-shadow text-4x">
+                <span class="font-bold block text-u-c suez-font">{{category}}</span>
+            </h2>
+            <p class="h5 m-t-md font-bold">SELECT PRODUCT TO VIEW OPTIONS</p>
+            <!-- <p class="h5 m-y-lg text-u-c font-bold">Tap a product type to view the full range</p> -->
+            <div class="padding">
+                <div class="row">
+                    <div class="row">
+                        <!-- 1st Product Row -->
+                        <main>
+                            <div class="col-lg-2" ng-repeat="product in products ">
+                                <a href="meat-item.html" ui-sref="app.meat-item({meat: category, _id: product._id})">
+                                    <div>
+                                        <b class="product-list-text text-u-l text-center">{{product.title}}</b>
+                                    </div>
+                                    <div class="box">
+                                        <img src="../assets/images/xmas.min/{{product.image}}" alt=""
+                                             class="img-responsive">
+                                    </div>
+                                </a>
+                            </div>
+                            <div ng-if="category == 'other'">
+                                <div class="col-lg-2">
+                                    <a ui-sref="app.custom-item">
+                                        <div>
+                                            <b class="product-list-text text-u-l text-center">Custom Product</b>
+                                        </div>
+                                        <div class="box">
+                                            <img src="../assets/images/xmas.min/custom-item.jpg" alt=""
+                                                 class="img-responsive">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </main>
+                    </div>
+                </div>
+            </div>
+
+            <!--
+            <div class="col-sm-12">
+                <button class="btn btn-lg btn-outline rounded b-primary text-primary" href="main-products.html"
+                        ui-sref="app.main-products">Proceed to Checkout
+                </button>
+            </div> -->
+        </div>
+    </div>
+</div>

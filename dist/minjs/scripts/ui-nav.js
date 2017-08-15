@@ -1,0 +1,1 @@
+!function(){"use strict";function e(){var e={restrict:"AC",link:t};return e}function t(e,t,n){t.find("a").bind("click",function(e){var t=angular.element(this).parent(),n=t.parent()[0].querySelectorAll(".active");t.toggleClass("active"),angular.element(n).removeClass("active")})}angular.module("app").directive("uiNav",e)}();

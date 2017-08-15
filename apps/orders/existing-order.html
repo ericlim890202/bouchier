@@ -1,0 +1,54 @@
+<div>
+    <div class="row-col row-col-xs">
+        <div>
+            <div class="text-center pos-rlt p-y-md">
+                <h2 class="text-shadow text-4x">
+                    <span class="font-bold block m-t-lg suez-font">EXISTING ORDER</span>
+                </h2>
+                <p class="h5 m-y-lg font-bold">SEARCH FOR AN EXISTING ORDER TO EDIT</p>
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="input-group-lg m-b">
+                        <input type="text" class="form-control" ng-model="searchList" placeholder="Enter order number or customer name">
+
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped b-t b-b">
+                            <thead>
+                            <tr>
+                                <th>Customer Name</th>
+                                <th>Order Number</th>
+                                <th>Store</th>
+                                <th>PickupDate</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr dir-paginate="order in orders | filter:searchList | itemsPerPage: pageSize"
+                                current-page="currentPage">
+                                <td class="text-left">{{order.customerName}}</td>
+                                <td class="text-left">{{order.orderNumber}}</td>
+                                <td class="text-left">{{order.store}}</td>
+                                <td class="text-left">{{order.pickUpDate}}/12/2016</td>
+                                <td>
+                                    <button class="btn btn-xs btn-outline rounded b-primary text-primary" ng-click="editOrder(order)">Edit Order
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Pagination in footer -->
+                            <tfoot>
+                            <tr>
+                                <td></td>
+                                <td colspan="6" class="text-right">
+                                    <dir-pagination-controls max-size="5" boundary-links="true"
+                                                             template-url="../libs/angular/pagination-directive/paginationDir-tpl.html"></dir-pagination-controls>
+                                </td>
+                            </tr>
+                            </tfoot>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

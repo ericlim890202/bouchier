@@ -1,0 +1,70 @@
+<div class="padding">
+    <div class="row">
+        <div class="text-center pos-rlt p-y-md">
+            <h2 class="text-shadow text-4x">
+                <span class="font-bold block suez-font dark-blue-text">ORDER SUMMARY</span>
+            </h2>
+        </div>
+    </div>
+    <div class="col-md-12 m-b order-sum-card">
+        <div class="col-md-6">
+            <p><input type="text" class="form-control width-half m-b" ng-model="orderDetails.staffOwner" placeholder="Enter Staff Name" required>
+                Name: <strong>{{orderOwnerFilter(orderDetails.customerID).fname}}
+                {{orderOwnerFilter(orderDetails.customerID).lname}}</strong><br>
+                Email: <strong>{{orderOwnerFilter(orderDetails.customerID).email}}</strong><br>
+                Phone Number: <strong>{{orderOwnerFilter(orderDetails.customerID).phone}}</strong>
+            </p>
+        </div>
+        <div class="col-md-6">
+            <form>
+                <p>
+                    <select class="form-control c-select width-half" ng-model="orderDetails.store" required>
+                        <option value="" selected>Select Store</option>
+                        <option ng-repeat="store in stores">{{store}}</option>
+                    </select>
+                    <select ng-if="orderDetails.store == 'City'" class="form-control c-select width-half m-t" ng-model="orderDetails.pickUpDate">
+                        <option value="" selected>Select Pickup Date</option>
+                        <option ng-repeat="d in pickupdates track by $index" value="{{d.date}}">{{d.date}}/12/16 - No.{{citypud[d.date]}}</option>
+                    </select>
+                    <select ng-if="orderDetails.store == 'Toorak'" class="form-control c-select width-half m-t" ng-model="orderDetails.pickUpDate">
+                        <option value="" selected>Select Pickup Date</option>
+                        <option ng-repeat="d in pickupdates track by $index" value="{{d.date}}">{{d.date}}/12/16 - No.{{toorakpud[d.date]}}</option>
+                    </select>
+                    <select ng-if="orderDetails.store == 'Deli'" class="form-control c-select width-half m-t" ng-model="orderDetails.pickUpDate">
+                        <option value="" selected>Select Pickup Date</option>
+                        <option ng-repeat="d in pickupdates track by $index" value="{{d.date}}">{{d.date}}/12/16 - No.{{delipud[d.date]}}</option>
+                    </select>
+                    <input ng-model="orderDetails.deposit" class="form-control width-half m-t" ng-if="orderDetails.store != 'Toorak' && orderDetails.store != undefined" type="number" placeholder="Enter a deposit amount">
+                </p>
+            </form>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped white b-a">
+            <thead>
+            <tr>
+                <th>QTY</th>
+                <th>TITLE</th>
+                <th style="width:7%">REMOVE</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in orderDetails.items track by $index">
+                <td><span ng-if="item.unitQty">{{item.unitQty}}</span> <span
+                        ng-if="item.weightQty">{{item.weightQty}}kg</span></td>
+                <td>{{item.title}}</td>
+                <td class="text-center color-red">
+                    <a ng-click="showModal(item)">
+                        <i class="material-icons fontBold">&#xe14c;</i>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-right m-t">
+        <button ng-hide="orderDetails.store != 'Toorak' && orderDetails.deposit == undefined" class="btn add-cart-color" ng-disabled="orderDetails.pickUpDate == undefined || orderDetails.pickUpDate == '' || orderDetails.staffOwner == '' || orderDetails.staffOwner == undefined" ng-click="confirmOrder()">Confirm Order
+            <i class="material-icons">&#xe877;</i>
+        </button>
+    </div>
+</div>

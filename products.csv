@@ -1,0 +1,92 @@
+Product Title,code,meat,bynuit,bywei
+Whole Turkey 4kg +,9401,turkey,true,false
+Whole Turkey 5kg +,9402,turkey,true,false
+Whole Turkey 6kg +,9403,turkey,true,false
+Whole Turkey 7kg +,9404,turkey,true,false
+Boned and Seasoned Turkey - Apricot & Macadamia Nut,9408,turkey,false,true
+Boned and Seasoned Turkey - Sage & Onion,9407,turkey,false,true
+Turkey Buffet 4kg +,9416,turkey,true,false
+Turkey Buffet 5kg +,9417,turkey,true,false
+Turkey Buffet 6kg +,9418,turkey,true,false
+Turkey Breast Fillet - Plain,9412,turkey,false,true
+"Turkey Breast Fillet - Chestnut, Cranberry & Cinnamon",9414,turkey,false,true
+Turkey Breast Fillet - Fig & Ciabatta,9413,turkey,false,true
+Turkey Breast Fillet - Apricot & Macadamia Nut,9415,turkey,false,true
+Trio Poulet,9419,turkey,false,true
+Full Ham on Bone - 7.5kg,9202,ham,true,false
+Full Ham on Bone - 8kg,9203,ham,true,false
+Full Ham on Bone - 8.5kg,92033,ham,true,false
+Full Ham on Bone - 9kg +,9204,ham,true,false
+Full Ham on Bone - Glazed Ham on Bone,9205,ham,false,true
+Full Ham on Bone -  Prep for Glaze,9208,ham,false,true
+Half Ham on Bone,9209,ham,false,true
+Half Ham on Bone - Glazed Ham on Bone,9010,ham,false,true
+Half Ham on Bone - Prep for Glaze,9211,ham,false,true
+Rare Breed H.O.B,9231,ham,false,true
+Ham Nuggets < 1kg,9219,ham,true,false
+Ham Nuggets > 1kg,9238,ham,true,false
+Boneless Leg Ham,9212,ham,false,true
+Boneless Leg Ham - Glazed,9213,ham,false,true
+Boneless Leg Ham - Prep for Glaze,9214,ham,false,true
+Boned & Seasoned Chicken,4201,poultry,false,true
+Marinated Chicken Steaks,4224,poultry,false,true
+Whole Chicken - Bannockburn,4210,poultry,true,false
+Whole Chicken - Barossa,4209,poultry,true,false
+Whole Chicken - Milawa,4207,poultry,true,false
+Plain Pork Belly,5232,pork,false,true
+Pork Racks 3pts,5218,pork,true,false
+Pork Racks 4pts,5219,pork,true,false
+Pork Racks 5pts,5220,pork,true,false
+Pork Racks 6pts,5221,pork,true,false
+Rolled Loin of Pork - Plain - 1kg,5238,pork,true,false
+Rolled Loin of Pork - Plain - 1.5kg,5239,pork,true,false
+Rolled Loin of Pork - Plain - 2kg,5240,pork,true,false
+Rolled Loin of Pork - Plain - 2.5kg,5241,pork,true,false
+Rolled Loin of Pork - Plain - 3kg,5242,pork,true,false
+Rolled Loin of Pork - Sage & Onion - 1kg,5244,pork,true,false
+Rolled Loin of Pork - Sage & Onion - 1.5kg,5245,pork,true,false
+Rolled Loin of Pork - Sage & Onion - 2kg,5246,pork,true,false
+Rolled Loin of Pork - Sage & Onion - 2.5kg,5247,pork,true,false
+Rolled Loin of Pork - Sage & Onion - 3kg,5248,pork,true,false
+"Rolled Loin of Pork - Chestnut, Cran & Cinnamon - 1kg",5250,pork,true,false
+"Rolled Loin of Pork - Chestnut, Cran & Cinnamon - 1.5kg",5251,pork,true,false
+"Rolled Loin of Pork - Chestnut, Cran & Cinnamon - 2kg",5252,pork,true,false
+"Rolled Loin of Pork - Chestnut, Cran & Cinnamon - 2.5kg",5253,pork,true,false
+"Rolled Loin of Pork - Chestnut, Cran & Cinnamon - 3kg",5254,pork,true,false
+Eye Fillet Roast - Whole,1202,beef,false,true
+Eye Fillet - Steaks,1207,beef,false,true
+Rib Eye Roast - 2 ribs,12472,beef,true,false
+Rib Eye Roast - 3 ribs,12473,beef,true,false
+Rib Eye Roast - 4 ribs,12474,beef,true,false
+Rib Eye Roast - 5 ribs,12475,beef,true,false
+Rib Eye Roast - 6 ribs,12476,beef,true,false
+Rib Eye Roast - Steaks,1248,beef,false,true
+Scotch Fillet Roast - Whole,1221,beef,false,true
+Scotch Fillet - Steaks,1223,beef,false,true
+Porterhouse Roast - Whole,1208,beef,false,true
+Porterhouse Roast - Steaks,1209,beef,false,true
+Apple Sauce,7315,other,true,false
+Fig & Ciabatta Seas. - Small,7321,other,true,false
+Fig & Ciabatta Seas. - Large,7322,other,true,false
+Apricot & Mac Seas. - Small,7323,other,true,false
+Apricot & Mac Seas. - Large,7324,other,true,false
+Sage and Onion Seas. - Small,7319,other,true,false
+Sage and Onion Seas. - Large,7320,other,true,false
+Chestnut & Cinn Seas. - Small,7326,other,true,false
+Chestnut & Cinn Seas. - Large,7327,other,true,false
+Cranberry Seas.,7316,other,true,false
+Turkey Gravy,7318,other,true,false
+Minted Cutlets,3242,lamb,false,true
+Plain Cutlets,3220,lamb,false,true
+Lamb Rack,3216,lamb,false,true
+Marinated Butterfly Leg,3238,lamb,false,true
+Medit Butterflied Leg,3248,lamb,false,true
+Chicken & Chive Chip,6221,sausage,false,true
+Plain Thin,6202,sausage,false,true
+Plain Chip,6218,sausage,false,true
+"H, L & R Thick",6207,sausage,false,true
+"H, L & R Chip",6216,sausage,false,true
+Chicken & Corn,6204,sausage,false,true
+Pork Thick,6212,sausage,false,true
+Pork Chip,6217,sausage,false,true
+Turkey Thick,6222,sausage,false,true

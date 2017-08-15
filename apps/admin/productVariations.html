@@ -1,0 +1,84 @@
+<div class="padding">
+    <div class="m-b inline-flex">
+        <div class="m-l">
+            <h4>Product Variations</h4>
+        </div>
+
+    </div>
+    <!-- Parent Product Details -->
+    <div class="padding order-sum-card m-b">
+        <div class="form-group row">
+            <label class="col-sm-3 form-control-label">Title:</label>
+            <div class="col-sm-9">
+                <h5>{{tempProduct.title}}</h5>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 form-control-label">Meat Type:</label>
+            <div class="col-sm-9">
+                <span class="font-capital">{{tempProduct.meat}}</span>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="box">
+            <div>
+                <div class="box-body pull-right">
+                    <button class="btn btn-sm m-r order-btn-hover" ng-click="addQtyVariation()">
+                        <i class="material-icons">&#xe145;</i>
+                        Add Product Variation
+                    </button>
+                </div>
+                <div class="box-header pull-left">
+                    <h2>Product Type Variations</h2>
+                </div>
+            </div>
+            <div>
+                <table class="table table-striped b-t b-b">
+                    <thead>
+                    <tr>
+                        <th>Variation</th>
+                        <th>Cost</th>
+                        <th>Product Code</th>
+                        <th style="width:5%">Edit</th>
+                        <th style="width:7%" class="text-center">Remove</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="var in produtVarFiltered = (tempProduct.productVar | limitTo : lengthFilter:selectedPage*lengthFilter  | filter: search)">
+                        <td>{{var.title}}</td>
+                        <td><span ng-if="var.priceType == 'weight'">{{var.cost | currency}} kg</span><span ng-if="var.priceType == 'unit'">{{var.cost | currency}} each</span></td>
+                        <td>{{var.code}}</td>
+                        <td>
+                            <button ng-click="editVariation(var)"
+                                    class="btn btn-xs btn-outline rounded b-primary text-primary">Edit
+                            </button>
+                        </td>
+                        <td class="text-center color-red">
+                            <a ng-click="showDeleteQtyModal(var)">
+                                <i class="material-icons fontBold">&#xe14c;</i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <!-- Pagination not needed?
+                    <tfoot>
+                    <tr>
+                        <td>
+                        </td>
+                        <td colspan="5" class="text-right">
+                            <ul class="pagination pagination-sm m-a-0">
+                                <li><a href><i class="fa fa-chevron-left"></i></a></li>
+                                <li ng-class="{'active':selectedPage == $index}" ng-click="selectPage($index)"
+                                    ng-repeat="page in pages"><a href>{{page}}</a></li>
+                                <li><a href><i class="fa fa-chevron-right"></i></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    </tfoot> -->
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

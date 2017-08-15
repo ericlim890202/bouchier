@@ -1,0 +1,117 @@
+<div class="padding">
+    <div class="clearfix m-b nav-active-primary">
+        <ul class="nav nav-pills fontBold" ui-nav>
+            <!--<li class="nav-item active">-->
+                <!--<a class="nav-link" ui-sref="app.products" href="productsList.html"-->
+                   <!--ng-class="{active: $state.includes ('app.products')}">-->
+                    <!--Products-->
+                <!--</a>-->
+            <!--</li>-->
+            <li class="nav-item">
+                <a class="nav-link" ui-sref="app.customers" href="customersList.html"
+                   ng-class="{active: $state.includes ('app.customers')}">
+                    Customers
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" ui-sref="app.users" href="usersList.html"
+                   ng-class="{active: $state.includes ('app.users')}">
+                    Users
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" ui-sref="app.orders" href="orderList.html"
+                   ng-class="{active: $state.includes ('app.orders')}">
+                    Orders
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" ui-sref="app.product-summary" href="productSummary.html.html"
+                   ng-class="{active: $state.includes ('app.product-summary')}">
+                    Summary
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" ui-sref="app.website-orders" href="website-orders.html"
+                   ng-class="{active: $state.includes ('app.website-orders')}">
+                    Website Orders
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="box">
+        <div>
+            <div class="box-body pull-right">
+                <button class="btn btn-sm m-r order-btn-hover" ng-click="import()">
+                    <i class="material-icons">&#xe145;</i>
+                    Add Product
+                </button>
+                <span>Results per page:</span>
+                <input type="number" min="1" max="100" class="form-control input-sm w-auto inline" ng-model="pageSize">
+                </select>
+                <input ng-model="searchList" placeholder="Search Products" type="text"
+                       class="form-control input-sm w-auto inline"/>
+            </div>
+            <div class="box-header pull-left">
+                <h2>Products List</h2>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped b-t b-b">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Meat</th>
+                    <th>Code</th>
+                    <th>Cost</th>
+                    <th style="width:5%">Edit</th>
+                    <th style="width:5%">Variations</th>
+                    <th style="width:7%" class="text-center">Remove</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr dir-paginate="product in products | filter:searchList  | itemsPerPage: pageSize"
+                    current-page="currentPage">
+                    <td>{{product.title}}</td>
+                    <td class="font-capital">{{product.meat}}</td>
+                    <td>
+                        {{product.code}}
+                        <span ng-if="product.byFixedweight">*see variations</span>
+                    </td>
+                    <td>
+                        <span ng-if="product.weightCost">{{product.weightCost | currency}} per kg</span>
+                        <span ng-if="product.weightCost && product.unitCost">or</span>
+                        <span ng-if="product.unitCost">{{product.unitCost | currency}} each</span>
+                        <span ng-if="product.byFixedweight">*see variations</span>
+                    </td>
+                    <td>
+                        <button ng-click="editProduct(product)"
+                                class="btn btn-xs btn-outline rounded b-primary text-primary">Edit
+                        </button>
+                    </td>
+                    <td>
+                        <button ui-sref="app.product-variations({id: product._id})"
+                                class="btn btn-xs btn-outline rounded b-primary text-primary">View
+                        </button>
+                    </td>
+                    <td class="text-center color-red">
+                        <a ng-click="deleteProductModal(product)">
+                            <i class="material-icons fontBold">&#xe14c;</i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+                <!-- Pagination in footer -->
+                <tfoot>
+                <tr>
+                    <td></td>
+                    <td colspan="6" class="text-right">
+                        <dir-pagination-controls max-size="5" boundary-links="true"
+                                                 template-url="../libs/angular/pagination-directive/paginationDir-tpl.html"></dir-pagination-controls>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

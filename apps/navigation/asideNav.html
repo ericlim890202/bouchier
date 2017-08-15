@@ -1,0 +1,51 @@
+<div class="aside">
+    <div class="aside-header">
+        <div class="list-group-item no-border">
+            <button type="button" class="aside-close-btn pull-right" ng-click="$hide()">
+                <i class="material-icons v-m">&#xe5cd;</i>
+            </button>
+            <h4 class="aside-title">Main Menu</h4>
+        </div>
+    </div>
+    <div class="aside-body">
+        <div class="panel-group">
+            <a class="list-group-item no-radius fontBold" ng-class="{active: $state.includes('app.meat-selection')}" ng-click="$hide()" href="meat-selection.html" ui-sref="app.meat-selection">
+                <span class="pull-right text-primary"></span>
+                MEAT SELECTION
+            </a>
+            <a class="list-group-item no-radius fontBold" ng-class="{active: $state.includes('app.meat-range', {_id: 'ham'})}" ng-click="$hide()" ui-sref="app.meat-range({_id:'ham'})">
+                <span class="pull-right text-primary"></span>
+                HAM
+            </a>
+            <a class="list-group-item no-radius fontBold" ng-class="{active: $state.includes('app.meat-range', {_id: 'pork'})}" ng-click="$hide()" ui-sref="app.meat-range({_id:'pork'})">
+                <span class="pull-right text-primary"></span>
+                PORK
+            </a>
+            <a class="list-group-item no-radius fontBold" ng-class="{active: $state.includes('app.meat-range', {_id: 'turkey'})}" ng-click="$hide()" ui-sref="app.meat-range({_id:'turkey'})">
+                <span class="pull-right text-primary"></span>
+                TURKEY
+            </a>
+            <a class="list-group-item no-radius fontBold" ng-class="{active: $state.includes('app.meat-range', {_id: 'beef'})}" ng-click="$hide()" ui-sref="app.meat-range({_id:'beef'})">
+                <span class="pull-right text-primary"></span>
+                BEEF
+            </a>
+            <a class="list-group-item no-radius fontBold" ng-class="{active: $state.includes('app.meat-range', {_id: 'poultry'})}" ng-click="$hide()" ui-sref="app.meat-range({_id:'poultry'})">
+                <span class="pull-right text-primary"></span>
+                POULTRY
+            </a>
+            <a class="list-group-item no-radius fontBold" ng-class="{active: $state.includes('app.meat-range', {_id: 'lamb'})}" ng-click="$hide()" ui-sref="app.meat-range({_id:'lamb'})">
+                <span class="pull-right text-primary"></span>
+                LAMB
+            </a>
+            <a class="list-group-item no-radius fontBold" ng-class="{active: $state.includes('app.meat-range', {_id: 'sausage'})}" ng-click="$hide()" ui-sref="app.meat-range({_id:'sausage'})">
+                <span class="pull-right text-primary"></span>
+                SAUSAGES
+            </a>
+            <a class="list-group-item no-radius fontBold" ng-class="{active: $state.includes('app.meat-range', {_id: 'other'})}" ng-click="$hide()" ui-sref="app.meat-range({_id:'other'})">
+                <span class="pull-right text-primary"></span>
+                OTHER
+            </a>
+        </div>
+    </div>
+    <div class="aside-footer"></div>
+</div>

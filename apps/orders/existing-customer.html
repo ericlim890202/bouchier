@@ -1,0 +1,66 @@
+<div>
+    <div class="row-col row-col-xs">
+        <div>
+            <div class="text-center pos-rlt p-y-md">
+                <h2 class="text-shadow text-4x">
+                    <span class="font-bold block m-t-lg suez-font">EXISTING CUSTOMER</span>
+                </h2>
+                <p class="h5 m-y-lg font-bold">SEARCH FOR AN EXISTING CUSTOMER TO CREATE A NEW ORDER</p>
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="input-group-lg m-b">
+                        <input type="text" class="form-control" ng-model="searchList"
+                               placeholder="Enter existing customer name, email or phone">
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped b-t b-b">
+                            <thead>
+                            <tr>
+                                <th>Customer Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr dir-paginate="customer in customers | orderBy: 'lname' | filter:searchList | itemsPerPage: pageSize"
+                                current-page="currentPage">
+                                <td class="text-left">
+                                    <span>{{customer.fname}} {{customer.lname}}</span>
+                                </td>
+                                <td class="text-left">
+                                    <span>{{customer.email}}</span>
+                                </td>
+                                <td class="text-left">
+                                    <span>{{customer.phone}}</span>
+                                </td>
+                                <td>
+                                    <button class="md-btn md-flat md-btn-circle"
+                                            ng-click="editCustomers(customer)">
+                                        <i class="material-icons">&#xe3c9;</i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <button class="btn btn-xs btn-outline rounded b-primary text-primary"
+                                            ng-click="newExistingCustomerOrder(customer)">Create Order
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Pagination in footer -->
+                            <tfoot>
+                            <tr>
+                                <td></td>
+                                <td colspan="6" class="text-right">
+                                    <dir-pagination-controls max-size="5" boundary-links="true"
+                                                             template-url="../libs/angular/pagination-directive/paginationDir-tpl.html"></dir-pagination-controls>
+                                </td>
+                            </tr>
+                            </tfoot>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
