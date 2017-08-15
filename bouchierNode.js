@@ -12,7 +12,8 @@ var WebSocketServer = require('ws').Server;
 var app = express();
 
 var cluster = require('cluster');
-
+var mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/Bouchier';
+var mongoSessionUri = process.env.MONGOLAB_YELLOW_URI || 'mongodb://localhost:27017/crm-sessions';
 
  if (cluster.isMaster) {
 
@@ -52,7 +53,7 @@ var cluster = require('cluster');
      app.use(session({
          secret: 'shshsh!!8282829--2"{}":}{]s]s][d[d[]ss[dsdsasklkjsdfj;n3334%$#&SGSGrrr',
          name: 'KissDocs',
-         store: new MongoStore({url: process.env.MONGODB_URI}), // connect-mongo session store
+         store: new MongoStore({url: mongoSessionUri}), // connect-mongo session store
          proxy: true,
          resave: true,
          saveUninitialized: true
@@ -106,7 +107,7 @@ var cluster = require('cluster');
      app.post('/login', function (req, res, next) {
 
 
-         MongoClient.connect(process.env.MONGODB_URI, function (err, db) {
+         MongoClient.connect(mongoUri, function (err, db) {
              if (err) {
                  return console.dir(err);
              }
@@ -142,7 +143,7 @@ var cluster = require('cluster');
 
      app.get('/bookings', function (req, res) {
 
-         MongoClient.connect(process.env.MONGODB_URI, function (err, db) {
+         MongoClient.connect(mongoUri, function (err, db) {
              if (err) {
                  return console.dir(err);
              }
@@ -163,7 +164,7 @@ var cluster = require('cluster');
 
      app.get('/clients', function (req, res) {
 
-         MongoClient.connect(process.env.MONGODB_URI, function (err, db) {
+         MongoClient.connect(mongoUri, function (err, db) {
              if (err) {
                  return console.dir(err);
              }
@@ -185,7 +186,7 @@ var cluster = require('cluster');
 
      app.get('/users', function (req, res) {
 
-         MongoClient.connect(process.env.MONGODB_URI, function (err, db) {
+         MongoClient.connect(mongoUri, function (err, db) {
              if (err) {
                  return console.dir(err);
              }
@@ -205,7 +206,7 @@ var cluster = require('cluster');
 
      app.post('/clients', function (req, res) {
 
-         MongoClient.connect(process.env.MONGODB_URI, function (err, db) {
+         MongoClient.connect(mongoUri, function (err, db) {
              if (err) {
                  return console.dir(err);
              }
@@ -232,7 +233,7 @@ var cluster = require('cluster');
      });
      app.delete('/clients', function (req, res) {
 
-         MongoClient.connect(process.env.MONGODB_URI, function (err, db) {
+         MongoClient.connect(mongoUri, function (err, db) {
              if (err) {
                  return console.dir(err);
              }
@@ -257,7 +258,7 @@ var cluster = require('cluster');
      app.get('/db/tasks/:ownerid', function (req, res) {
          var ownerid = req.params.ownerid;
 
-         MongoClient.connect(process.env.MONGODB_URI, function (err, db) {
+         MongoClient.connect(mongoUri, function (err, db) {
              if (err) {
                  return console.dir(err);
              }
@@ -277,7 +278,7 @@ var cluster = require('cluster');
      app.get('/:db/create', function (req, res) {
          var dataBase = req.params.db;
          var record = JSON.parse(req.query.models)[0];
-         MongoClient.connect(process.env.MONGODB_URI, function (err, db) {
+         MongoClient.connect(mongoUri, function (err, db) {
              if (err) {
                  return console.dir(err);
              }
@@ -302,7 +303,7 @@ var cluster = require('cluster');
      app.get('/:db/update', function (req, res) {
          var dataBase = req.params.db;
          var record = JSON.parse(req.query.models)[0];
-         MongoClient.connect(process.env.MONGODB_URI, function (err, db) {
+         MongoClient.connect(mongoUri, function (err, db) {
              if (err) {
                  return console.dir(err);
              }
@@ -321,7 +322,7 @@ var cluster = require('cluster');
      app.get('/:db/destroy', function (req, res) {
          var dataBase = req.params.db;
          var record = JSON.parse(req.query.models)[0];
-         MongoClient.connect(process.env.MONGODB_URI, function (err, db) {
+         MongoClient.connect(mongoUri, function (err, db) {
              if (err) {
                  return console.dir(err);
              }
@@ -343,7 +344,7 @@ var cluster = require('cluster');
      app.get('/db/:db', function (req, res) {
          var dataBase = req.params.db;
 
-         MongoClient.connect(process.env.MONGODB_URI, function (err, db) {
+         MongoClient.connect(mongoUri, function (err, db) {
              if (err) {
                  return console.dir(err);
              }
@@ -364,7 +365,7 @@ var cluster = require('cluster');
      app.get('/db/:db/:meat', function (req, res) {
          var dataBase = req.params.db;
          var meat = req.params.meat;
-         MongoClient.connect(process.env.MONGODB_URI, function (err, db) {
+         MongoClient.connect(mongoUri, function (err, db) {
              if (err) {
                  return console.dir(err);
              }
@@ -447,7 +448,7 @@ var cluster = require('cluster');
          }
          ;
 
-         MongoClient.connect(process.env.MONGODB_URI, function (err, db) {
+         MongoClient.connect(mongoUri, function (err, db) {
              if (err) {
                  return console.dir(err);
              }
@@ -472,7 +473,7 @@ var cluster = require('cluster');
 
      app.delete('/db/:db', function (req, res) {
          var dataBase = req.params.db;
-         MongoClient.connect(process.env.MONGODB_URI, function (err, db) {
+         MongoClient.connect(mongoUri, function (err, db) {
              if (err) {
                  return console.dir(err);
              }
@@ -494,7 +495,7 @@ var cluster = require('cluster');
 
      app.post('/users', function (req, res) {
 
-         MongoClient.connect(process.env.MONGODB_URI, function (err, db) {
+         MongoClient.connect(mongoUri, function (err, db) {
              if (err) {
                  return console.dir(err);
              }
@@ -521,7 +522,7 @@ var cluster = require('cluster');
      });
      app.delete('/users', function (req, res) {
 
-         MongoClient.connect(process.env.MONGODB_URI, function (err, db) {
+         MongoClient.connect(mongoUri, function (err, db) {
              if (err) {
                  return console.dir(err);
              }
@@ -564,7 +565,7 @@ var cluster = require('cluster');
          var oo = false;
          sess = req.session;
 
-         MongoClient.connect(process.env.MONGODB_URI, function (err, db) {
+         MongoClient.connect(mongoUri, function (err, db) {
              if (err) {
                  return console.dir(err);
              }
